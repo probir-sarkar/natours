@@ -1,12 +1,12 @@
 // All required modules
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 const app = require("./app");
 // End of required modules
 
 // set environment variables from .env file
 // dotenv.config({ path: "./config.env" });
-dotenv.config({ path: "./etc/secrets/config.env" });
+// dotenv.config({ path: "./etc/secrets/config.env" });
 
 // get the database connection string from the environment variables
 const DB = process.env.DATABASE.replace(
@@ -27,8 +27,8 @@ mongoose
 const port = process.env.PORT || 3000;
 
 //  start the server
+console.log(`Server is running on port ${port}`);
 
 app.listen(port, () => {
   console.log(`"Server started on port 3000" ${port}`);
 });
-
