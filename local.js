@@ -5,9 +5,11 @@ const app = require("./app");
 // End of required modules
 
 // set environment variables from .env file
-dotenv.config({ path: "./config.env" });
-// dotenv.config({ path: "./etc/secrets/config.env" });
-
+if (process.env.PORT === undefined) {
+  dotenv.config({ path: "./config.env" });
+} else {
+  dotenv.config({ path: "/etc/secrets/config.env" });
+}
 // get the database connection string from the environment variables
 const DB = process.env.DATABASE.replace(
   "<PASSWORD>",
@@ -20,6 +22,7 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
   })
   .then(() => console.log("DB connection successful"));
 
@@ -31,4 +34,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`"Server started on port 3000" ${port}`);
 });
-

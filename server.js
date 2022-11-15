@@ -20,15 +20,11 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
   })
   .then(() => console.log("DB connection successful"));
 
-// server will listen on port 3000 for incoming requests
-const port = process.env.PORT || 3000;
+// server will listen on port 3001 for incoming requests
+const port = process.env.PORT || 3001;
 
-//  start the server
-console.log(`Server is running on port ${port}`);
-
-app.listen(port, () => {
-  console.log(`"Server started on port 3000" ${port}`);
-});
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
