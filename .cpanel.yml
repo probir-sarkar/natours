@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/probirsa/node/natours
+    - export DEPLOYPATH=/home/probirsa/repositories/natours
     - /bin/cp * $DEPLOYPATH
