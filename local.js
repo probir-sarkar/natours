@@ -7,8 +7,6 @@ const app = require("./app");
 // set environment variables from .env file
 if (process.env.PORT === undefined) {
   dotenv.config({ path: "./config.env" });
-} else {
-  dotenv.config({ path: "/etc/secrets/config.env" });
 }
 // get the database connection string from the environment variables
 const DB = process.env.DATABASE.replace(
