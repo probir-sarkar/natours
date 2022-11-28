@@ -41,6 +41,18 @@ exports.getAllTours = async (req, res) => {
   } else {
     query = query.sort("-createdAt");
   }
+  // 4 field limiting
+  if (req.query.fields) {
+    const fields = req.query.fields.replace(/,/g, " ");
+    query = query.select(fields);
+  } else {
+    query = query.select("-__v");
+  }
+  // 5 pagination
+  const page = +req.query.page || 1;
+  const limit = +req.query.limit || 100;
+  const skip = (page - 1) * limit;
+  query = query.skip(skip).limit(limit);
 
   try {
     const tours = await Tour.find(query);
